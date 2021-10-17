@@ -116,8 +116,31 @@ require('dotenv').config()
 16. We can update our database values by running these commands and specify the attribute that you want to change
 
 ``` sh
-
+heroku pg:psql -a abdul-arif-blog
 ```
+``` sh
+select * from users;
+```
+``` sh
+UPDATE users SET avatar_url = '/avatar.png' WHERE id = 1;
+```
+
+17. Deploy application
+
+
+``` sh
+git add .
+```
+``` sh
+git status
+```
+``` sh
+git commit -m "read profile from db"
+```
+``` sh
+git push heroku main
+```
+
 
 ## After cloning this repository, please do the following to get it running properly:
 
