@@ -57,7 +57,7 @@ git init
 npm install pg fastify-postgres
 ```
 
-11. Then we register it on app.js and use connectionString which contains the url with the username, password, server, port & database name for this postgresql base that we are going to access.
+11. Then we register it on app.js and use connectionString which contains the url with the username, password, server, port & database name for this postgresql base that we are going to access. We use a remote postgresql db and we pull this info from Heroku. process.env meanse we are getting DATABASE_URL from the enviroment. So we need to load this info into the enviroment when we are running our application. But since we don't have that info locally we will fetch the remote configuration and put it in our local enviroment.
 
 ``` js
   // Register fastify-postgres
@@ -67,6 +67,56 @@ npm install pg fastify-postgres
       rejectUnauthorized: false
     }
   })
+```
+
+12. Then we use heroku config to see the DATABASE_URL
+
+``` sh
+heroku config -a abdul-arif-blog
+```
+
+13. We create a .env file and ignore it in .gitignore so this sensitive info won't appear when you push your code to GitHub
+
+14. Then we use heroku config --shell to get the line to put in our .ent file which sets the DATABASE_URL
+
+``` sh
+heroku config --shell -a abdul-arif-blog
+```
+
+15. Then we did
+
+``` sh
+npm install dotenv
+```
+
+14. Add in app.js, this loads any .env you have in your folder and fetches those variables and loads them into the enviroment. We have successfully configured our database
+
+``` js
+require('dotenv').config()
+```
+
+15. In root.js we do a query.
+
+``` js
+  fastify.get('/about', async function (request, reply) {
+    const { rows } = await fastify.pg.query('SELECT * FROM users LIMIT 1') // we are adding a query to give us 1 result
+    
+    // const results = await fastify.....
+    // const rows = results.row
+    // our line extracts the rows properties in one step. This is called object destructuring in JavaScript
+    
+    const [user] = rows // assign that value to user variable
+    
+    // const user = rows[0]
+
+    return reply.view('./templates/about.hbs', { user })
+  })
+```
+
+16. We can update our database values by running these commands and specify the attribute that you want to change
+
+``` sh
+
 ```
 
 ## After cloning this repository, please do the following to get it running properly:
@@ -88,7 +138,7 @@ heroku create <unique-app-name>
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-4. Load the database with the seed data
+4. Load the database with the seed data (or copy everything from database.sql and paste it into the database terminal after running the cmd heroku pg:psql)
 
 ```sh
 heroku pg:psql < database.sql
