@@ -51,6 +51,24 @@ npm install point-of-view handlebars
 git init
 ```
 
+10. Then we create a Heroku app (see step 2. of next section) and then add support for postgresql on package.json using the cmd below. 
+
+``` sh
+npm install pg fastify-postgres
+```
+
+11. Then we register it on app.js and use connectionString which contains the url with the username, password, server, port & database name for this postgresql base that we are going to access.
+
+``` js
+  // Register fastify-postgres
+  fastify.register(require('fastify-postgres'), {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  })
+```
+
 ## After cloning this repository, please do the following to get it running properly:
 
 1. Install Dependencies (creates node_modules folders and gets dependencies from package.json file)
