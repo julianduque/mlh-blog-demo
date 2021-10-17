@@ -26,4 +26,4 @@ ALTER TABLE posts
     REFERENCES users (id);
 
 INSERT INTO users (username, profile, display_name, avatar_url, created_at)
-VALUES ('jduque', 'Developer Advocate at Salesforce', 'Julián Duque', 'https://s.gravatar.com/avatar/c2d1139b787a469e13229070d6be918c?s=300', now());
+VALUES ('abdularif0705', 'Aspiring Software Developer', 'Abdul Arif', '/avatar.png', now());
