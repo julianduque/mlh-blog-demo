@@ -40,7 +40,18 @@ npm install
 
 7. We used root.js to define all routes. Fastify works using HTTP methods such as GET, POST, DELETE, PUT, OPTIONS, etc.
 
-After cloning this repository, please do the following to get started:
+8. Then we get the plugin point-of-view, specifically we will implement handlebars
+
+``` sh
+npm install point-of-view handlebars
+```
+
+9. Use ERD Editor extension in VS Code to see databases. Make sure you are using git for the next part because heroku supports git-based deployments. I used GitKraken when I forked his code so I didn't need to use:
+``` sh
+git init
+```
+
+## After cloning this repository, please do the following to get it running properly:
 
 1. Install Dependencies (creates node_modules folders and gets dependencies from package.json file)
 ``` sh
