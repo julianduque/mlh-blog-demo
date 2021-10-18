@@ -1,0 +1,9 @@
+<h1>Latest blog posts</h1>
+<a href="/posts/new">Create new</a>
+{{#each posts}}
+	<article>
+		<h2>{{title}}</h2>
+		<p>{{description}}</p>
+		<p>{{{content}}}</p>
+	</article>
+{{/each}}
