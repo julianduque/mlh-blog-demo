@@ -8,22 +8,24 @@
   },
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
-    "start": "fastify start -l info app.js",
+    "start": "fastify start -a '0.0.0.0' -l info app.js",
     "dev": "fastify start -w -l info -P app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Julián Duque <julianduquej@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.3.1",
     "fastify-cli": "^2.13.0",
+    "fastify-formbody": "^5.1.0",
     "fastify-plugin": "^3.0.0",
     "fastify-postgres": "^3.6.0",
     "fastify-sensible": "^3.1.0",
     "fastify-static": "^4.4.2",
     "handlebars": "^4.7.7",
+    "marked": "^3.0.7",
     "pg": "^8.7.1",
     "point-of-view": "^4.15.2"
   },
